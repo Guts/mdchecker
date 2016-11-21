@@ -7,7 +7,7 @@ Requirements:
 - the following python modules:
   - uwsgi
   - flask
-  -flask_sqlalchemy
+  - flask_sqlalchemy
   - OWSLib
   - lxml
   - pyshp
@@ -97,3 +97,27 @@ docker-compose up -d
 ```
 
 Finally, open [http://localhost:8080/](http://localhost:8080/) in your browser
+
+## Windows OS
+
+1. Download and install the [Microsoft Visual C++ Compiler for Python 2.7](https://www.microsoft.com/en-us/download/details.aspx?id=44266)
+
+2. Create libs subfolder and download lxml inside [from Christoph Golke website](http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml) (or alternativaley from [this issue](https://github.com/geobretagne/mdchecker/issues/27#issuecomment-262089231))
+
+3. In a PowerShell admin prompt:
+
+```PowerShell
+[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "User")
+pip install virtualenv
+virtualenv venv --no-site-packages
+.\venv\Scripts\activate.ps1
+pip install -r .\app\requirements_win64.txt
+```
+
+4. Run the  server
+
+```PowerShell
+python .\app\runserver.py
+```
+
+Finally, open [http://localhost:5000/](http://localhost:5000/) in your browser
